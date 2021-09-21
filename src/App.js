@@ -8,14 +8,16 @@ import {
   trendingItems,
   upcomingMovies,
 } from "./store/movies/actions";
+import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
 
 const App = () => {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.moviesReducer);
+  const { shows } = useSelector((state) => state.tvReducer);
 
   // useEffect(() => dispatch(topRatedMovies()), [dispatch]);
-  useEffect(() => dispatch(upcomingMovies()), [dispatch]);
-  // console.log(movies);
+  useEffect(() => dispatch(topRatedShows()), [dispatch]);
+  // console.log(shows);
   return (
     <div className="App">
       <div></div>
