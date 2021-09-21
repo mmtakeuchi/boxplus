@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { popularMovies } from "./store/movies/actions";
+import {
+  nowPlayingMovies,
+  popularMovies,
+  topRatedMovies,
+  trendingItems,
+  upcomingMovies,
+} from "./store/movies/actions";
 
 const App = () => {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.moviesReducer);
 
-  useEffect(() => dispatch(popularMovies()), []);
-  console.log(movies);
+  // useEffect(() => dispatch(topRatedMovies()), [dispatch]);
+  useEffect(() => dispatch(upcomingMovies()), [dispatch]);
+  // console.log(movies);
   return (
     <div className="App">
       <div></div>
