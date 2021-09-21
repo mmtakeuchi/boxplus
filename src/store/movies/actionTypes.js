@@ -1,0 +1,1 @@
+export const POPULAR_MOVIES = "POPULAR_MOVIES";
