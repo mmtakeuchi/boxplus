@@ -7,7 +7,11 @@ import {
 } from "./actionTypes";
 
 const initialState = {
-  movies: [],
+  trending: [],
+  popular: [],
+  topRated: [],
+  nowPlaying: [],
+  upcoming: [],
 };
 
 const moviesReducer = (state = initialState, action) => {
@@ -15,27 +19,27 @@ const moviesReducer = (state = initialState, action) => {
     case TRENDING_ITEMS:
       return {
         ...state,
-        movies: action.items,
+        trending: action.items,
       };
     case POPULAR_MOVIES:
       return {
         ...state,
-        movies: action.movies,
+        popular: action.movies,
       };
     case TOP_RATED_MOVIES:
       return {
         ...state,
-        movies: action.movies,
+        topRated: action.movies,
       };
     case NOW_PLAYING_MOVIES:
       return {
         ...state,
-        movies: action.movies,
+        nowPlaying: action.movies,
       };
     case UPCOMING_MOVIES:
       return {
         ...state,
-        movies: action.movies,
+        upcoming: action.movies,
       };
     default:
       return state;

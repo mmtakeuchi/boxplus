@@ -10,19 +10,26 @@ import {
 } from "./store/movies/actions";
 import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
 import Navbar from "./components/Navbar/Navbar";
+import HomePage from "./components/HomePage/HomePage";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { movies } = useSelector((state) => state.moviesReducer);
-  const { shows } = useSelector((state) => state.tvReducer);
+  const { movies, shows } = useSelector((state) => state);
 
-  // useEffect(() => dispatch(topRatedMovies()), [dispatch]);
+  useEffect(() => dispatch(topRatedMovies()), [dispatch]);
+  useEffect(() => dispatch(nowPlayingMovies()), [dispatch]);
+  useEffect(() => dispatch(popularMovies()), [dispatch]);
+  useEffect(() => dispatch(trendingItems()), [dispatch]);
+  useEffect(() => dispatch(upcomingMovies()), [dispatch]);
   useEffect(() => dispatch(topRatedShows()), [dispatch]);
-  // console.log(shows);
+  useEffect(() => dispatch(onAirShows()), [dispatch]);
+  useEffect(() => dispatch(popularShows()), [dispatch]);
   return (
     <div className="App">
       <Navbar />
-      <div className="main">Home</div>
+      <div className="main">
+        <HomePage movies={movies} shows={shows} />
+      </div>
     </div>
   );
 };
