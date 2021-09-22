@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+@import "http://fonts.googleapis.com/css?family=Gluten";
+
+nav {
+  border-bottom: 1px solid $charleston;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: "Gluten", sans-serif;
+  font-size: 1.25rem;
+}
