@@ -9,6 +9,7 @@ import {
   upcomingMovies,
 } from "./store/movies/actions";
 import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
+import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,8 @@ const App = () => {
   // console.log(shows);
   return (
     <div className="App">
-      <div></div>
+      <Navbar />
+      <div className="main">Home</div>
     </div>
   );
 };
