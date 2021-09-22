@@ -1,7 +1,9 @@
 import { ON_AIR_SHOWS, POPULAR_SHOWS, TOP_RATED_SHOWS } from "./actionTypes";
 
 const initialState = {
-  shows: [],
+  onAir: [],
+  popular: [],
+  topRated: [],
 };
 
 const tvReducer = (state = initialState, action) => {
@@ -9,17 +11,17 @@ const tvReducer = (state = initialState, action) => {
     case ON_AIR_SHOWS:
       return {
         ...state,
-        shows: action.shows,
+        onAir: action.shows,
       };
     case POPULAR_SHOWS:
       return {
         ...state,
-        shows: action.shows,
+        popular: action.shows,
       };
     case TOP_RATED_SHOWS:
       return {
         ...state,
-        shows: action.shows,
+        topRated: action.shows,
       };
 
     default:

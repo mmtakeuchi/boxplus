@@ -15,7 +15,6 @@ export const trendingItems = (dispatch) => {
     axios
       .get(`${BASE_URL}/trending/all/week?api_key=${key}&language=en-US`)
       .then((item) => {
-        console.log(item);
         if (item) {
           return dispatch({
             type: TRENDING_ITEMS,
