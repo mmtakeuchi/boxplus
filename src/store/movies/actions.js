@@ -90,16 +90,15 @@ export const upcomingMovies = (dispatch) => {
   };
 };
 
-export const movieDetails = (dispatch, movieId) => {
+export const movieDetails = (movieId, dispatch) => {
   return (dispatch) => {
     axios
       .get(`${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US`)
       .then((movie) => {
-        console.log(movie);
         if (movie) {
           return dispatch({
             type: MOVIE_DETAILS,
-            movie: movie.data.results,
+            movie: movie.data,
           });
         }
       })
