@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Router, Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import {
   nowPlayingMovies,
@@ -12,10 +12,10 @@ import {
 import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { movies, shows } = useSelector((state) => state);
 
   useEffect(() => dispatch(topRatedMovies()), [dispatch]);
   useEffect(() => dispatch(nowPlayingMovies()), [dispatch]);
@@ -25,19 +25,23 @@ const App = () => {
   useEffect(() => dispatch(topRatedShows()), [dispatch]);
   useEffect(() => dispatch(onAirShows()), [dispatch]);
   useEffect(() => dispatch(popularShows()), [dispatch]);
+
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Navbar />
         <div className="main">
           <Switch>
             <Route exact path="/">
-              <HomePage movies={movies} shows={shows} />
+              <HomePage />
+            </Route>
+            <Route path="/:type/:movieId">
+              <MovieDetails />
             </Route>
           </Switch>
         </div>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 

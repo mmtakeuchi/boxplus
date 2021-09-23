@@ -5,6 +5,7 @@ import {
   TOP_RATED_MOVIES,
   TRENDING_ITEMS,
   UPCOMING_MOVIES,
+  MOVIE_DETAILS,
 } from "./actionTypes";
 const key = process.env.REACT_APP_MOVIES_API_KEY;
 
@@ -82,6 +83,23 @@ export const upcomingMovies = (dispatch) => {
           return dispatch({
             type: UPCOMING_MOVIES,
             movies: movies.data.results,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const movieDetails = (dispatch, movieId) => {
+  return (dispatch) => {
+    axios
+      .get(`${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US`)
+      .then((movie) => {
+        console.log(movie);
+        if (movie) {
+          return dispatch({
+            type: MOVIE_DETAILS,
+            movie: movie.data.results,
           });
         }
       })
