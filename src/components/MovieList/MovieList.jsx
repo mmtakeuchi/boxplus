@@ -1,19 +1,10 @@
 import React from "react";
+import MovieCard from "../MovieCard/MovieCard";
 import "./MovieList.scss";
 
 const MovieList = ({ title, movies }) => {
   const listMovies =
-    movies &&
-    movies.map((movie) => (
-      <li key={movie.id} className="movie">
-        <img
-          src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`}
-          alt={movie.name || movie.title}
-          className="poster"
-        />
-        <p>{movie.name || movie.title}</p>
-      </li>
-    ));
+    movies && movies.map((movie) => <MovieCard movie={movie} key={movie.id} />);
 
   return (
     <div className="movieRow">
