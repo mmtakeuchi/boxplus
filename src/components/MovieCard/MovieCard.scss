@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.movie {
+  margin-right: 0.5em;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  .poster {
+    border-radius: 5%;
+    height: calc(150px * 1.5);
+    width: auto;
+    margin-top: 10px;
+  }
+
+  .movieName {
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0.5em;
+    // color: #f4f4f4;
+    color: $silk;
+  }
+}
+
+.movie:hover {
+  transform: translateY(-10px);
+}
