@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import {
   nowPlayingMovies,
@@ -25,12 +26,18 @@ const App = () => {
   useEffect(() => dispatch(onAirShows()), [dispatch]);
   useEffect(() => dispatch(popularShows()), [dispatch]);
   return (
-    <div className="App">
-      <Navbar />
-      <div className="main">
-        <HomePage movies={movies} shows={shows} />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="main">
+          <Switch>
+            <Route exact path="/">
+              <HomePage movies={movies} shows={shows} />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
