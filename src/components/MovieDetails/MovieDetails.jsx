@@ -56,9 +56,6 @@ const MovieDetails = (props) => {
       <div
         className="detailsHeader"
         style={{
-          // backgroundImage: `url(https://image.tmdb.org/t/p/${
-          //   movie.backdrop_path || tv.backdrop_path
-          // })`,
           backgroundImage: `url(
           https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${details.backdrop_path}`,
         }}

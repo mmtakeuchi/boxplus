@@ -44,10 +44,12 @@ const moviesReducer = (state = initialState, action) => {
         upcoming: action.movies,
       };
     case MOVIE_DETAILS:
+      console.log(action.movie);
       return {
         ...state,
         movie: action.movie,
       };
+
     default:
       return state;
   }
