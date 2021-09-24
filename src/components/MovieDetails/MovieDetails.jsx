@@ -3,6 +3,8 @@ import { useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { movieDetails } from "../../store/movies/actions";
 import { showDetails } from "../../store/tv/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
@@ -34,13 +36,17 @@ const MovieDetails = (props) => {
     return genres && genres.map((genre) => genre.name).join(", ");
   };
 
-  const formatRunTime = (runtime) => {
+  const formatRuntime = (runtime) => {
     let num = runtime;
     let hours = num / 60;
     let rhours = Math.floor(hours);
     let minutes = (hours - rhours) * 60;
     let rminutes = Math.round(minutes);
-    return `${rhours}h ${rminutes}m`;
+    if (rhours < 1) {
+      return `${rminutes}m`;
+    } else {
+      return `${rhours}h ${rminutes}m`;
+    }
   };
 
   useEffect(() => {
@@ -61,25 +67,43 @@ const MovieDetails = (props) => {
         }}
       >
         <img
-          src={`https://image.tmdb.org/t/p/w220_and_h330_face${details.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w300_and_h450_face${details.poster_path}`}
           alt={details.name}
         />
         <div className="header">
-          <h2 className="name">
+          <h1 className="name">
             {type === "movie" ? movie.name || movie.title : tv.name || tv.title}
             <span className="releaseDate">({formatDate()})</span>
-          </h2>
+          </h1>
           <div className="detailFacts">
+            <span className="rating">
+              {movie.release_dates || tv.content_ratings}
+            </span>
             <span className="genres">{formatGenres()}</span>
             <span className="runTime">
-              {formatRunTime(movie.runtime || (tv && tv.episode_run_time))}
+              {formatRuntime(movie.runtime || (tv && tv.episode_run_time))}
             </span>
           </div>
           <div className="headerInfo">
             <p className="tagline">{movie.tagline || tv.tagline}</p>
-            <h3>Overview</h3>
-            <p>{movie.overview || tv.overview}</p>
-            <ol className="creators"></ol>
+            <div className="overview">
+              <h2>Overview</h2>
+              <p>{movie.overview || tv.overview}</p>
+            </div>
+            <p className="video">
+              <a
+                className="link"
+                href={`https://www.youtube.com/watch?v=${
+                  type === "movie"
+                    ? movie.videos && movie.videos.key
+                    : tv.videos && tv.videos.key
+                }`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube
+              </a>
+            </p>
           </div>
         </div>
       </div>
