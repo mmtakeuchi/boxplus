@@ -2,9 +2,12 @@ import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MovieList.scss";
 
-const MovieList = ({ title, movies }) => {
+const MovieList = ({ title, movies, type }) => {
   const listMovies =
-    movies && movies.map((movie) => <MovieCard movie={movie} key={movie.id} />);
+    movies &&
+    movies.map((movie) => (
+      <MovieCard movie={movie} type={type} key={movie.id} />
+    ));
 
   return (
     <div className="movieRow">

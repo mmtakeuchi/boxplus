@@ -1,0 +1,62 @@
+.detailsContainer {
+  // padding: 1rem;
+  position: relative;
+}
+
+.detailsHeader {
+  position: relative;
+  display: flex;
+  padding: 2em;
+  font-size: 1em;
+
+  * {
+    position: relative;
+  }
+
+  img {
+    margin-right: 2em;
+  }
+
+  .releaseDate {
+    margin-left: 0.5em;
+  }
+
+  .headerInfo {
+    margin: 1em 0;
+  }
+}
+
+.detailsHeader::before {
+  content: "";
+  background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
+  // background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    to bottom right,
+    rgba(12.16%, 11.37%, 10.2%, 1),
+    rgba(12.16%, 11.37%, 10.2%, 0.84)
+  );
+  // background: linear-gradient(
+  //   to right,
+  //   rgba(76.08%, 74.51%, 72.55%, 1) 150px,
+  //   rgba(76.08%, 74.51%, 72.55%, 0.84) 100%
+  // );
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.8;
+}
+
+.runTime::before {
+  content: "\A";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  display: inline-block;
+  margin: 2px 7px;
+}

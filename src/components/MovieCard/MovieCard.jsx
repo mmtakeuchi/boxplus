@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./MovieCard.scss";
 
-const MovieCard = ({ movie }) => {
-  const type = movie.media_type;
+const MovieCard = ({ movie, type }) => {
+  const mediaType = movie.media_type;
 
   return (
     <li key={movie.id} className="movie">
-      <Link to={`/${type}/${movie.id}`}>
+      <Link to={`/${mediaType ?? type}/${movie.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`}
           alt={movie.name || movie.title}
