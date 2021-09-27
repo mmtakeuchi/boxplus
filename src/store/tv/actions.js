@@ -61,7 +61,7 @@ export const showDetails = (id, dispatch) => {
   return (dispatch) => {
     axios
       .get(
-        `${BASE_URL}/${id}?api_key=${key}&language=en-US&append_to_response=videos, credits,content_ratings`
+        `${BASE_URL}/${id}?api_key=${key}&language=en-US&append_to_response=videos,credits,content_ratings`
       )
       .then((show) => {
         const runtime = show.data.episode_run_time[0];

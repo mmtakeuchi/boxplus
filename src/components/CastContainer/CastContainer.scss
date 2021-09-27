@@ -1,0 +1,48 @@
+.castContainer {
+  padding: 0.5rem 1rem 1rem 3rem;
+
+  h3 {
+    margin: 0.25em 0 0.5em;
+  }
+}
+
+.castRow {
+  display: flex;
+  align-items: stretch;
+  overflow: scroll;
+
+  .member p {
+    margin: 0;
+    padding: 0.25em 0.5em;
+  }
+
+  .member {
+    margin-right: 1rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 100%;
+
+    .castProfile {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: block;
+      border: 0;
+      outline: none;
+      height: 175px;
+      width: 138px;
+    }
+
+    .castName {
+      font-weight: 800;
+      padding-top: 0.5em;
+    }
+
+    .character {
+      padding: 0.5em;
+    }
+  }
+}
+
+.castRow::-webkit-scrollbar {
+  display: none;
+}

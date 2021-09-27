@@ -5,6 +5,7 @@ import { movieDetails } from "../../store/movies/actions";
 import { showDetails } from "../../store/tv/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import CastContainer from "../CastContainer/CastContainer";
 import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
@@ -107,6 +108,8 @@ const MovieDetails = (props) => {
           </div>
         </div>
       </div>
+
+      <CastContainer cast={details?.credits?.cast} />
     </div>
   );
 };
