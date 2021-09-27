@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.recContainer {
+  padding: 0.5rem 1rem 1rem 3rem;
+
+  h3 {
+    margin: 0.25em 0 0.5em;
+  }
+
+  .recRow {
+    display: flex;
+    overflow: scroll;
+    overflow-y: hidden;
+    list-style: none;
+    padding: 0;
+
+    .link {
+      text-decoration: none;
+      color: $silk;
+      font-weight: 500;
+    }
+  }
+}
+
+.recRow::-webkit-scrollbar {
+  display: none;
+}

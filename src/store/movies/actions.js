@@ -94,7 +94,7 @@ export const movieDetails = (movieId, dispatch) => {
   return (dispatch) => {
     axios
       .get(
-        `${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US&append_to_response=videos,credits,release_dates`
+        `${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US&append_to_response=videos,credits,release_dates,recommendations`
       )
       .then((movie) => {
         const rating = movie.data.release_dates.results.find(
@@ -103,10 +103,17 @@ export const movieDetails = (movieId, dispatch) => {
 
         const videos = movie.data.videos.results[0];
 
+        const recommendations = movie.data.recommendations.results;
+
         if (movie) {
           return dispatch({
             type: MOVIE_DETAILS,
-            movie: { ...movie.data, release_dates: rating, videos },
+            movie: {
+              ...movie.data,
+              release_dates: rating,
+              videos,
+              recommendations,
+            },
           });
         }
       })

@@ -61,7 +61,7 @@ export const showDetails = (id, dispatch) => {
   return (dispatch) => {
     axios
       .get(
-        `${BASE_URL}/${id}?api_key=${key}&language=en-US&append_to_response=videos,credits,content_ratings`
+        `${BASE_URL}/${id}?api_key=${key}&language=en-US&append_to_response=videos,credits,content_ratings,recommendations`
       )
       .then((show) => {
         const runtime = show.data.episode_run_time[0];
@@ -71,6 +71,8 @@ export const showDetails = (id, dispatch) => {
 
         const videos = show.data.videos.results[0];
 
+        const recommendations = show.data.recommendations.results;
+
         if (show) {
           return dispatch({
             type: SHOW_DETAILS,
@@ -79,6 +81,7 @@ export const showDetails = (id, dispatch) => {
               episode_run_time: runtime,
               content_ratings: rating,
               videos,
+              recommendations,
             },
           });
         }

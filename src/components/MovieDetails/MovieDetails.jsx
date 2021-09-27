@@ -6,6 +6,7 @@ import { showDetails } from "../../store/tv/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import CastContainer from "../CastContainer/CastContainer";
+import { Recommendations } from "../Recommendations/Recommendations";
 import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
@@ -102,7 +103,7 @@ const MovieDetails = (props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube
+                <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube Trailer
               </a>
             </p>
           </div>
@@ -110,6 +111,7 @@ const MovieDetails = (props) => {
       </div>
 
       <CastContainer cast={details?.credits?.cast} />
+      <Recommendations recommendations={details?.recommendations} />
     </div>
   );
 };

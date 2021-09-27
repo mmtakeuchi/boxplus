@@ -10,6 +10,9 @@
   display: flex;
   align-items: stretch;
   overflow: scroll;
+  overflow-y: hidden;
+  list-style: none;
+  padding: 0;
 
   .member p {
     margin: 0;
