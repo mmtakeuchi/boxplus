@@ -13,6 +13,7 @@ import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const App = () => {
             </Route>
           </Switch>
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );
