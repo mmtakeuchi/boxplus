@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import "./Recommendations.scss";
 
 export const Recommendations = ({ recommendations }) => {
-  console.log(recommendations);
-
   const topRecommended = recommendations?.slice(0, 10).map((item) => (
-    <li key={item.id}>
+    <li key={item.id} className="rec">
       <Link to={`/${item.media_type}/${item.id}`} className="link">
         <img
           src={`https://www.themoviedb.org/t/p/w250_and_h141_face/${item.backdrop_path}`}

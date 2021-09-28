@@ -1,7 +1,11 @@
+@import "../../styles/variables";
+
 .castContainer {
   padding: 0.5rem 1rem 1rem 3rem;
+  font-weight: 600;
 
   h3 {
+    color: $scrub;
     margin: 0.25em 0 0.5em;
   }
 }
@@ -9,21 +13,22 @@
 .castRow {
   display: flex;
   align-items: stretch;
-  overflow: scroll;
+  overflow: auto;
   overflow-y: hidden;
   list-style: none;
   padding: 0;
+  padding-bottom: 10px;
 
   .member p {
     margin: 0;
     padding: 0.25em 0.5em;
+    color: $silk;
   }
 
   .member {
     margin-right: 1rem;
-    border: 1px solid white;
+    border: 1px solid $scrub;
     border-radius: 10px;
-    width: 100%;
 
     .castProfile {
       border-top-left-radius: 10px;
@@ -33,6 +38,7 @@
       outline: none;
       height: 175px;
       width: 138px;
+      //   min-width: 100%;
     }
 
     .castName {
@@ -47,5 +53,10 @@
 }
 
 .castRow::-webkit-scrollbar {
-  display: none;
+  background: $charleston;
+}
+.castRow::-webkit-scrollbar-thumb {
+  background-color: $silk;
+  border-radius: 6px;
+  scrollbar-width: thin;
 }

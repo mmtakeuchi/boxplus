@@ -4,6 +4,7 @@
   padding: 0.5rem 1rem 1rem 3rem;
 
   h3 {
+    color: $scrub;
     margin: 0.25em 0 0.5em;
   }
 
@@ -14,14 +15,32 @@
     list-style: none;
     padding: 0;
 
-    .link {
-      text-decoration: none;
-      color: $silk;
-      font-weight: 500;
+    .rec {
+      height: 100%;
+      width: 100%;
+
+      .itemPoster {
+        margin-top: 10px;
+      }
+
+      .link {
+        text-decoration: none;
+        color: $silk;
+        font-weight: 600;
+      }
     }
   }
 }
 
+.rec:hover {
+  transform: translateY(-10px);
+}
+
 .recRow::-webkit-scrollbar {
-  display: none;
+  background: $charleston;
+}
+.recRow::-webkit-scrollbar-thumb {
+  background-color: $silk;
+  border-radius: 6px;
+  scrollbar-width: thin;
 }

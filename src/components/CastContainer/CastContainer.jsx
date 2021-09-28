@@ -4,7 +4,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "./CastContainer.scss";
 
 const CastContainer = ({ cast }) => {
-  const topBilledCast = cast?.slice(0, 10).map((member) => (
+  const topBilledCast = cast?.slice(0, 15).map((member) => (
     <li key={member.id} className="member">
       {member.profile_path ? (
         <img
@@ -13,7 +13,12 @@ const CastContainer = ({ cast }) => {
           className="castProfile"
         />
       ) : (
-        <FontAwesomeIcon icon={faUser} size="lg" className="castProfile" />
+        <FontAwesomeIcon
+          icon={faUser}
+          size="md"
+          className="castProfile"
+          color="#dcd0c0"
+        />
       )}
       <p className="castName">{member.name}</p>
       <p className="character">{member.character}</p>

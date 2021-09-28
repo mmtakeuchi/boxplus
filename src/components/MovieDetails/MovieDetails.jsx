@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieDetails } from "../../store/movies/actions";
 import { showDetails } from "../../store/tv/actions";
@@ -33,6 +33,14 @@ const MovieDetails = (props) => {
     }
   };
 
+  const showRating = () => {
+    if (type === "movie") {
+      return details?.release_dates || "NR";
+    } else if (type === "tv") {
+      return details?.content_ratings || "NR";
+    }
+  };
+
   const formatGenres = () => {
     let genres = movie.genres || tv.genres;
     return genres && genres.map((genre) => genre.name).join(", ");
@@ -49,6 +57,11 @@ const MovieDetails = (props) => {
     } else {
       return `${rhours}h ${rminutes}m`;
     }
+  };
+
+  const formatMoney = (num) => {
+    let money = num && num.toLocaleString("en-US");
+    return money;
   };
 
   useEffect(() => {
@@ -78,9 +91,7 @@ const MovieDetails = (props) => {
             <span className="releaseDate">({formatDate()})</span>
           </h1>
           <div className="detailFacts">
-            <span className="rating">
-              {movie.release_dates || tv.content_ratings}
-            </span>
+            <span className="rating">{showRating()}</span>
             <span className="genres">{formatGenres()}</span>
             <span className="runTime">
               {formatRuntime(movie.runtime || (tv && tv.episode_run_time))}
@@ -93,18 +104,37 @@ const MovieDetails = (props) => {
               <p>{movie.overview || tv.overview}</p>
             </div>
             <p className="video">
-              <a
+              <Link
                 className="link"
-                href={`https://www.youtube.com/watch?v=${
-                  type === "movie"
-                    ? movie.videos && movie.videos.key
-                    : tv.videos && tv.videos.key
-                }`}
+                to={{
+                  pathname: `https://www.youtube.com/watch?v=${
+                    type === "movie"
+                      ? movie.videos && movie.videos.key
+                      : tv.videos && tv.videos.key
+                  }`,
+                }}
                 target="_blank"
                 rel="noreferrer"
               >
                 <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube Trailer
-              </a>
+              </Link>
+            </p>
+            <p className="status">{`Status: ${details?.status}`}</p>
+            <div className="money">
+              <span className="budget">{`Budget: $${formatMoney(
+                details?.budget
+              )}`}</span>
+              <span>{`Revenue: $${formatMoney(details?.revenue)}`}</span>
+            </div>
+            <p className="website">
+              <Link
+                to={{ pathname: `${details?.homepage}` }}
+                target="_blank"
+                className="link"
+                rel="noreferrer"
+              >
+                Website Homepage
+              </Link>
             </p>
           </div>
         </div>

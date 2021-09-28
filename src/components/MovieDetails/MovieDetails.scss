@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .detailsContainer {
   // padding: 1rem;
   position: relative;
@@ -8,6 +10,12 @@
   display: flex;
   padding: 2em;
   font-size: 1.25em;
+  font-weight: 500;
+
+  .link {
+    text-decoration: none;
+    color: $paper;
+  }
 
   * {
     position: relative;
@@ -20,7 +28,7 @@
     padding: 1em 0;
 
     .name {
-      margin: 0.5em 0;
+      margin: 0.1em 0 0.3em;
     }
 
     .releaseDate {
@@ -40,17 +48,25 @@
     .headerInfo {
       margin: 1em 0;
 
+      .tagline {
+        opacity: 0.8;
+        margin: 0.1em;
+      }
+
       .overview {
-        margin: 40px 0;
+        margin: 1em 0;
+      }
+
+      .overview * {
+        margin: 0.5em 0;
       }
 
       .video {
-        margin-top: auto;
+        margin: auto 0 30px;
+      }
 
-        .link {
-          text-decoration: none;
-          color: white;
-        }
+      .money span {
+        margin-right: 1em;
       }
     }
   }
