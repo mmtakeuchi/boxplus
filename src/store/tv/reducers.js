@@ -1,9 +1,15 @@
-import { ON_AIR_SHOWS, POPULAR_SHOWS, TOP_RATED_SHOWS } from "./actionTypes";
+import {
+  ON_AIR_SHOWS,
+  POPULAR_SHOWS,
+  SHOW_DETAILS,
+  TOP_RATED_SHOWS,
+} from "./actionTypes";
 
 const initialState = {
   onAir: [],
   popular: [],
   topRated: [],
+  tv: {},
 };
 
 const tvReducer = (state = initialState, action) => {
@@ -23,7 +29,11 @@ const tvReducer = (state = initialState, action) => {
         ...state,
         topRated: action.shows,
       };
-
+    case SHOW_DETAILS:
+      return {
+        ...state,
+        tv: action.show,
+      };
     default:
       return state;
   }

@@ -90,16 +90,30 @@ export const upcomingMovies = (dispatch) => {
   };
 };
 
-export const movieDetails = (dispatch, movieId) => {
+export const movieDetails = (movieId, dispatch) => {
   return (dispatch) => {
     axios
-      .get(`${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US`)
+      .get(
+        `${BASE_URL}/movie/${movieId}?api_key=${key}&language=en-US&append_to_response=videos,credits,release_dates,recommendations`
+      )
       .then((movie) => {
-        console.log(movie);
+        const rating = movie.data.release_dates.results.find(
+          (code) => code.iso_3166_1 === "US"
+        ).release_dates[0].certification;
+
+        const videos = movie.data.videos.results[0];
+
+        const recommendations = movie.data.recommendations.results;
+
         if (movie) {
           return dispatch({
             type: MOVIE_DETAILS,
-            movie: movie.data.results,
+            movie: {
+              ...movie.data,
+              release_dates: rating,
+              videos,
+              recommendations,
+            },
           });
         }
       })

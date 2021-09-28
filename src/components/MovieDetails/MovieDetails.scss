@@ -1,0 +1,109 @@
+@import "../../styles/variables";
+
+.detailsContainer {
+  // padding: 1rem;
+  position: relative;
+}
+
+.detailsHeader {
+  position: relative;
+  display: flex;
+  padding: 2em;
+  font-size: 1.25em;
+  font-weight: 500;
+
+  .link {
+    text-decoration: none;
+    color: $paper;
+  }
+
+  * {
+    position: relative;
+  }
+
+  img {
+    margin-right: 3em;
+  }
+  .header {
+    padding: 1em 0;
+
+    .name {
+      margin: 0.1em 0 0.3em;
+    }
+
+    .releaseDate {
+      margin-left: 0.5em;
+    }
+
+    .detailFacts {
+      justify-content: center;
+      align-items: center;
+
+      .rating {
+        border: 1px solid white;
+        padding: 2px;
+      }
+    }
+
+    .headerInfo {
+      margin: 1em 0;
+
+      .tagline {
+        opacity: 0.8;
+        margin: 0.1em;
+      }
+
+      .overview {
+        margin: 1em 0;
+      }
+
+      .overview * {
+        margin: 0.5em 0;
+      }
+
+      .video {
+        margin: auto 0 30px;
+      }
+
+      .money span {
+        margin-right: 1em;
+      }
+    }
+  }
+}
+
+.detailsHeader::before {
+  content: "";
+  background-position: calc((((100vw / 2.222222) - 20px) / 1.5) / 2) 0;
+  // background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    to bottom right,
+    rgba(12.16%, 11.37%, 10.2%, 1),
+    rgba(12.16%, 11.37%, 10.2%, 0.84)
+  );
+  // background: linear-gradient(
+  //   to right,
+  //   rgba(76.08%, 74.51%, 72.55%, 1) 150px,
+  //   rgba(76.08%, 74.51%, 72.55%, 0.84) 100%
+  // );
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.8;
+}
+
+.genres::before,
+.runTime::before {
+  content: "\A";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  display: inline-block;
+  margin: 2px 7px;
+}

@@ -48,6 +48,7 @@ const moviesReducer = (state = initialState, action) => {
         ...state,
         movie: action.movie,
       };
+
     default:
       return state;
   }

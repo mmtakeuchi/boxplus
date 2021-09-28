@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import MovieList from "../MovieList/MovieList";
 
 const HomePage = () => {
-  const { movies, shows } = useSelector((state) => state);
+  const { movies, tv } = useSelector((state) => state);
   return (
-    <>
+    <div className="homePage">
       <MovieList title="trending" movies={movies.trending} />
-      {/* <MovieList title="popular movies" movies={movies.popular}  />
-      <MovieList title="popular shows" movies={shows.popular}  />
-      <MovieList title="on air shows" movies={shows.onAir}  /> */}
-    </>
+      <MovieList title="popular movies" movies={movies.popular} type="movie" />
+      <MovieList title="popular shows" movies={tv.popular} type="tv" />
+      <MovieList title="on air shows" movies={tv.onAir} type="tv" />
+    </div>
   );
 };
 

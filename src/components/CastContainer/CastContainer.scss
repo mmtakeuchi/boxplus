@@ -1,0 +1,62 @@
+@import "../../styles/variables";
+
+.castContainer {
+  padding: 0.5rem 1rem 1rem 3rem;
+  font-weight: 600;
+
+  h3 {
+    color: $scrub;
+    margin: 0.25em 0 0.5em;
+  }
+}
+
+.castRow {
+  display: flex;
+  align-items: stretch;
+  overflow: auto;
+  overflow-y: hidden;
+  list-style: none;
+  padding: 0;
+  padding-bottom: 10px;
+
+  .member p {
+    margin: 0;
+    padding: 0.25em 0.5em;
+    color: $silk;
+  }
+
+  .member {
+    margin-right: 1rem;
+    border: 1px solid $scrub;
+    border-radius: 10px;
+
+    .castProfile {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: block;
+      border: 0;
+      outline: none;
+      height: 175px;
+      width: 138px;
+      //   min-width: 100%;
+    }
+
+    .castName {
+      font-weight: 800;
+      padding-top: 0.5em;
+    }
+
+    .character {
+      padding: 0.5em;
+    }
+  }
+}
+
+.castRow::-webkit-scrollbar {
+  background: $charleston;
+}
+.castRow::-webkit-scrollbar-thumb {
+  background-color: $silk;
+  border-radius: 6px;
+  scrollbar-width: thin;
+}
