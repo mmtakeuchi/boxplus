@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 1rem 3rem;
+  border-top: 1px solid $silk;
+  font-size: 1.25rem;
+  color: $scrub;
+
+  .link {
+    text-decoration: none;
+    color: $scrub;
+  }
+}
