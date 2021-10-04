@@ -9,7 +9,23 @@ const HomePage = () => {
       <MovieList title="trending" movies={movies.trending} />
       <MovieList title="popular movies" movies={movies.popular} type="movie" />
       <MovieList title="popular shows" movies={tv.popular} type="tv" />
+      <MovieList
+        title="in theaters movies"
+        movies={movies.nowPlaying}
+        type="movie"
+      />
       <MovieList title="on air shows" movies={tv.onAir} type="tv" />
+      <MovieList
+        title="top rated movies"
+        movies={movies.topRated}
+        type="movie"
+      />
+      <MovieList title="top rated shows" movies={tv.topRated} type="tv" />
+      <MovieList
+        title="upcoming movies"
+        movies={movies.upcoming}
+        type="movie"
+      />
     </div>
   );
 };
