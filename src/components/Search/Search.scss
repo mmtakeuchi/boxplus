@@ -1,0 +1,46 @@
+@import "../../styles/variables";
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.75rem auto;
+  width: 100%;
+
+  .searchInputs {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+  }
+
+  input[type="text"] {
+    width: 95%;
+    padding: 0.5em;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .searchIcon {
+    width: 5%;
+    padding: 0.5em;
+    background-color: white;
+    display: grid;
+    place-items: center;
+  }
+
+  .searchIcon:hover {
+    cursor: pointer;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
+
+.searchInputs:focus-within {
+  outline: 4px solid $scrub;
+}

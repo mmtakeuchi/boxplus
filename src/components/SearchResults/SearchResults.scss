@@ -1,10 +1,17 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .searchResults {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: stretch;
-  overflow: scroll;
+  overflow: hidden;
   list-style: none;
   margin: 1rem 5em;
   padding: 0;
-  justify-content: flex-start;
 }

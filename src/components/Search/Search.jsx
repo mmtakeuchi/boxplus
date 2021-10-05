@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { movieSearch } from "../../store/movies/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Search.scss";
 
 const Search = (props) => {
@@ -22,16 +24,23 @@ const Search = (props) => {
     if (query) {
       dispatch(movieSearch(query));
       history.push(`/search/${slugify_name(query)}`);
+      setQuery(query);
     }
   };
 
   return (
-    <div className="search">
-      <form className="searchForm" onSubmit={handleSubmit}>
-        <input value={query} name="query" onChange={handleInputChange} />
-        <button className="submit" type="submit">
-          Search
-        </button>
+    <div className="searchForm">
+      <form className="searchInputs" onSubmit={handleSubmit}>
+        <input
+          placeholder="Search movies or tv shows..."
+          type="text"
+          value={query}
+          name="query"
+          onChange={handleInputChange}
+        />
+        <div className="searchIcon" onSubmit={handleSubmit}>
+          <FontAwesomeIcon icon={faSearch} color="#222b33" />
+        </div>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Search from "../Search/Search";
 import MovieList from "../MovieList/MovieList";
+import "./HomePage.scss";
 
 const HomePage = () => {
   const { movies, tv } = useSelector((state) => state);

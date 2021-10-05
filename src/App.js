@@ -8,6 +8,7 @@ import {
   topRatedMovies,
   trendingItems,
   upcomingMovies,
+  movieSearch,
 } from "./store/movies/actions";
 import { onAirShows, popularShows, topRatedShows } from "./store/tv/actions";
 import Navbar from "./components/Navbar/Navbar";
