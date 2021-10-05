@@ -2,8 +2,6 @@
 
 .movie {
   margin-right: 0.5em;
-  height: 100%;
-  width: 100%;
   cursor: pointer;
 
   .poster {
@@ -13,12 +11,21 @@
     margin-top: 10px;
   }
 
+  .posterImage {
+    border: 5px solid $scrub;
+    border-radius: 5%;
+    height: calc(145px * 1.5);
+    width: 100px;
+    margin-top: 10px;
+    padding: 0 25px;
+  }
+
   .movieName {
     font-size: 1em;
     font-weight: 700;
-    margin: 0.5em;
-    // color: #f4f4f4;
+    margin: 0.5em 0.25em;
     color: $silk;
+    max-width: 150px;
   }
 }
 

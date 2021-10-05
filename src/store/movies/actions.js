@@ -6,6 +6,7 @@ import {
   TRENDING_ITEMS,
   UPCOMING_MOVIES,
   MOVIE_DETAILS,
+  SEARCH_MOVIES,
 } from "./actionTypes";
 const key = process.env.REACT_APP_MOVIES_API_KEY;
 
@@ -114,6 +115,24 @@ export const movieDetails = (movieId, dispatch) => {
               videos,
               recommendations,
             },
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const movieSearch = (query, dispatch) => {
+  return (dispatch) => {
+    axios
+      .get(
+        `${BASE_URL}/search/multi?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
+      )
+      .then((movies) => {
+        if (movies) {
+          return dispatch({
+            type: SEARCH_MOVIES,
+            movies: movies.data.results,
           });
         }
       })

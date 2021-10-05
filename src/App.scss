@@ -2,6 +2,8 @@
 
 .App {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -9,7 +11,3 @@
   background: $charleston;
   color: $white;
 }
-
-// .main {
-//   padding: 0.25rem 0 0.25rem 2rem;
-// }
