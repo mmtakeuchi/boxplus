@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { movieSearch } from "../../store/movies/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Search.scss";
 
-const Search = (props) => {
+const Search = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();

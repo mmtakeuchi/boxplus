@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { movieSearch } from "../../store/movies/actions";
 import Search from "../Search/Search";
 import MovieCard from "../MovieCard/MovieCard";
@@ -17,13 +17,11 @@ const SearchResults = (props) => {
     return id.split("_").join(" ");
   };
 
-  console.log(movies);
-  console.log(id);
-
   const renderMovies =
     movies && movies.map((movie) => <MovieCard movie={movie} key={movie.id} />);
 
-  useEffect(() => dispatch(movieSearch(unslufify_name(id))), [dispatch]);
+  useEffect(() => dispatch(movieSearch(unslufify_name(id))), [dispatch, id]);
+
   return (
     <div className="searchContainer">
       <Search />

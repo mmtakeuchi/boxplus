@@ -17,7 +17,6 @@ const MovieDetails = (props) => {
   const { movie } = useSelector((state) => state.movies);
   const { tv } = useSelector((state) => state.tv);
   const details = type === "movie" ? movie : tv;
-  console.log(details);
 
   const formatDate = () => {
     let releaseDate;
