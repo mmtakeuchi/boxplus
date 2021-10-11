@@ -71,78 +71,85 @@ const MovieDetails = (props) => {
     }
   }, [dispatch, type, id]);
 
-  return (
-    <div className="detailsContainer">
-      <div
-        className="detailsHeader"
-        style={{
-          backgroundImage: `url(
+  const renderDetails = () =>
+    details ? (
+      <div className="detailsContainer">
+        <div
+          className="detailsHeader"
+          style={{
+            backgroundImage: `url(
           https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${details.backdrop_path}`,
-        }}
-      >
-        <img
-          src={`https://image.tmdb.org/t/p/w300_and_h450_face${details.poster_path}`}
-          alt={details.name}
-        />
-        <div className="header">
-          <h1 className="name">
-            {type === "movie" ? movie.name || movie.title : tv.name || tv.title}
-            <span className="releaseDate">({formatDate()})</span>
-          </h1>
-          <div className="detailFacts">
-            <span className="rating">{showRating()}</span>
-            <span className="genres">{formatGenres()}</span>
-            <span className="runTime">
-              {formatRuntime(movie.runtime || (tv && tv.episode_run_time))}
-            </span>
-          </div>
-          <div className="headerInfo">
-            <p className="tagline">{movie.tagline || tv.tagline}</p>
-            <div className="overview">
-              <h2>Overview</h2>
-              <p>{movie.overview || tv.overview}</p>
+          }}
+        >
+          <img
+            src={`https://image.tmdb.org/t/p/w300_and_h450_face${details.poster_path}`}
+            alt={details.name}
+          />
+          <div className="header">
+            <h1 className="name">
+              {type === "movie"
+                ? movie.name || movie.title
+                : tv.name || tv.title}
+              <span className="releaseDate">({formatDate()})</span>
+            </h1>
+            <div className="detailFacts">
+              <span className="rating">{showRating()}</span>
+              <span className="genres">{formatGenres()}</span>
+              <span className="runTime">
+                {formatRuntime(movie.runtime || (tv && tv.episode_run_time))}
+              </span>
             </div>
-            <p className="video">
-              <Link
-                className="link"
-                to={{
-                  pathname: `https://www.youtube.com/watch?v=${
-                    type === "movie"
-                      ? movie.videos && movie.videos.key
-                      : tv.videos && tv.videos.key
-                  }`,
-                }}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube Trailer
-              </Link>
-            </p>
-            <p className="status">{`Status: ${details?.status}`}</p>
-            <div className="money">
-              <span className="budget">{`Budget: $${formatMoney(
-                details?.budget
-              )}`}</span>
-              <span>{`Revenue: $${formatMoney(details?.revenue)}`}</span>
+            <div className="headerInfo">
+              <p className="tagline">{movie.tagline || tv.tagline}</p>
+              <div className="overview">
+                <h2>Overview</h2>
+                <p>{movie.overview || tv.overview}</p>
+              </div>
+              <p className="video">
+                <Link
+                  className="link"
+                  to={{
+                    pathname: `https://www.youtube.com/watch?v=${
+                      type === "movie"
+                        ? movie.videos && movie.videos.key
+                        : tv.videos && tv.videos.key
+                    }`,
+                  }}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon icon={faPlay} size="sm" /> Youtube Trailer
+                </Link>
+              </p>
+              <p className="status">{`Status: ${details?.status}`}</p>
+              <div className="money">
+                <span className="budget">{`Budget: $${formatMoney(
+                  details?.budget
+                )}`}</span>
+                <span>{`Revenue: $${formatMoney(details?.revenue)}`}</span>
+              </div>
+              <p className="website">
+                <Link
+                  to={{ pathname: `${details?.homepage}` }}
+                  target="_blank"
+                  className="link"
+                  rel="noreferrer"
+                >
+                  Website Homepage
+                </Link>
+              </p>
             </div>
-            <p className="website">
-              <Link
-                to={{ pathname: `${details?.homepage}` }}
-                target="_blank"
-                className="link"
-                rel="noreferrer"
-              >
-                Website Homepage
-              </Link>
-            </p>
           </div>
         </div>
-      </div>
 
-      <CastContainer cast={details?.credits?.cast} />
-      <Recommendations recommendations={details?.recommendations} />
-    </div>
-  );
+        <CastContainer cast={details?.credits?.cast} />
+        <Recommendations recommendations={details?.recommendations} />
+      </div>
+    ) : (
+      <div>Loading...</div>
+    );
+
+  return renderDetails();
 };
 
 export default MovieDetails;
