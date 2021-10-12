@@ -73,11 +73,9 @@ const MovieDetails = (props) => {
     }
   }, [dispatch, type, id]);
 
-  useEffect(
-    () => setDimensions([ref.current.offsetWidth, ref.current.offsetHeight]),
-    [ref]
+  useEffect(() =>
+    setDimensions([ref.current.offsetWidth, ref.current.offsetHeight])
   );
-  console.log(dimensions);
 
   const renderDetails = () =>
     details ? (
