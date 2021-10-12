@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieDetails } from "../../store/movies/actions";
@@ -10,6 +10,8 @@ import { Recommendations } from "../Recommendations/Recommendations";
 import "./MovieDetails.scss";
 
 const MovieDetails = (props) => {
+  const ref = useRef(null);
+  const [dimensions, setDimensions] = useState([]);
   const location = useLocation();
   const dispatch = useDispatch();
   const path = location.pathname;
@@ -71,14 +73,25 @@ const MovieDetails = (props) => {
     }
   }, [dispatch, type, id]);
 
+  useEffect(
+    () => setDimensions([ref.current.offsetWidth, ref.current.offsetHeight]),
+    [ref]
+  );
+  console.log(dimensions);
+
   const renderDetails = () =>
     details ? (
       <div className="detailsContainer">
         <div
           className="detailsHeader"
+          ref={ref}
           style={{
-            backgroundImage: `url(
-          https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${details.backdrop_path}`,
+            backgroundImage:
+              dimensions[0] > 800
+                ? `url(
+          https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${details.backdrop_path}`
+                : `url(
+                  https://www.themoviedb.org/t/p/w1000_and_h450_multi_faces${details.backdrop_path}`,
           }}
         >
           <img

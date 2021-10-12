@@ -15,7 +15,6 @@ const CastContainer = ({ cast }) => {
       ) : (
         <FontAwesomeIcon
           icon={faUser}
-          size="md"
           className="castProfile"
           color="#dcd0c0"
         />
